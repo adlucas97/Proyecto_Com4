@@ -1,7 +1,7 @@
 import serial, time
 # import RPi.GPIO as GPIO
 
-arduino = serial.Serial('/dev/ttyACM0',9600)    #cambiar el string por el nombre del puerto conectado al arduino
+arduino = serial.Serial('COM8',9600)    #cambiar el string por el nombre del puerto conectado al arduino
 time.sleep(2)
 
 # GPIO.setmode(GPIO.BOARD)
