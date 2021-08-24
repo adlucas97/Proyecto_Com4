@@ -9,7 +9,7 @@ time.sleep(2)
 inicio = time.time()
 tiempo = 0
 muestras = []
-while(tiempo<8):    #toma muestras por 5 sec
+while(tiempo<5):    #toma muestras por 5 sec
     rawString = arduino.readline()
     print(rawString)
     muestra = int(rawString.decode('utf-8'))
