@@ -13,15 +13,17 @@ text_img = pytesseract.image_to_string(img)
 text_gray = pytesseract.image_to_string(gray)
 text_adapt_thre = pytesseract.image_to_string(adaptive_threshold)
 
-print('--------------------------------------------img----------------------------')
-print(text_img)
-print('--------------------------------------------gray----------------------------')
-print(text_gray)
-print('--------------------------------------------adaptive threshold----------------------------')
-print(text_adapt_thre)
+height_img,width_img,_= img.shape
+
+boxes = pytesseract.image_to_boxes(img)
+for b in boxes.splitlines():
+    print(b)
+    b = b.split(' ')
+    x,y,w,h = int(b[1]),int(b[2]),int(b[3]),int(b[4])
+    cv2.rectangle(img,(x,height_img-y),(w,height_img-h),(0,0,255),2)
 
 # cv2.imshow("Img",img)
 cv2.imshow("img",img)
-cv2.imshow("gray",gray)
-cv2.imshow("adapt_thre",adaptive_threshold)
+# cv2.imshow("gray",gray)
+# cv2.imshow("adapt_thre",adaptive_threshold)
 cv2.waitKey(0)
