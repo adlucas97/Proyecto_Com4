@@ -16,8 +16,8 @@ muestras = []
 while(tiempo<5):    #toma muestras por 5 sec
     rawString = arduino.readline()
     #print(rawString)
-    muestra = int(rawString.decode('utf-8'))
-    if(muestra != 0):
+    muestra = int(rawString.decode('utf-8', 'ignore'))
+    if(muestra != 800 and muestra != 801 and muestra !=802):
         muestras.append(muestra)
     tiempo = time.time()-inicio
 
@@ -29,7 +29,7 @@ varianza = st.variance(x)
 potencia = st.mean(x**2 for x in x)
 magnitud = st.mean(abs(numeros) for numeros in x)
 prod = np.multiply(x[0:len(x)-1], x[1:len(x)])
-cruces = len(np.sort(prod[prod<0]))
+cruces = len(np.sort(prod[prod<800]))
 #Impresión de resultados
 print('Media :', media)
 print('Desviacion Estandar :', desviacion)
@@ -44,4 +44,5 @@ plt.title('Análisis de señales de voz - Primera')
 plt.xlabel('Índice');
 plt.ylabel('Registro');
 plt.show()
+
 
