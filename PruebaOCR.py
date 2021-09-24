@@ -2,11 +2,11 @@ import cv2
 import argparse as arg
 import pytesseract
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-ap = arg.ArgumentParser()
-ap.add_argument("-i", "--image", required=True, help="Path to the image")
-args = vars(ap.parse_args())
-image = cv2.imread(args["image"])
+pytesseract.pytesseract.tesseract_cmd = r'D:\Program Files\tesseract.exe'
+# ap = arg.ArgumentParser()
+# ap.add_argument("-i", "--image", required=True, help="Path to the image")
+# args = vars(ap.parse_args())
+image = cv2.imread("DPI_PRUEBA.jpg")
 image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 borroso = cv2.GaussianBlur(image, (5,5), 0)
 umbral_gaussiano=cv2.adaptiveThreshold(borroso, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
